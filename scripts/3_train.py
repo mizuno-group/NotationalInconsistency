@@ -39,6 +39,8 @@ from addict import Dict
 from tqdm import tqdm
 
 # ===== Project-local =====
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+
 from notate import enable_autoregistration
 enable_autoregistration()
 

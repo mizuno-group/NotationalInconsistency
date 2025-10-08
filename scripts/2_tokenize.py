@@ -1,4 +1,4 @@
-# scripts/voc.py
+# scripts/2_tokenize.py
 import argparse
 from pathlib import Path
 from glob import glob
