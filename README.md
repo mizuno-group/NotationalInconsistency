@@ -5,7 +5,7 @@ This repository contains the official implementation of the paper:
 > **Impact of SMILES Notational Inconsistencies on Chemical Language Models Trained via Molecular Translation**
 > Yosuke Kikuchi, Yasuhiro Yoshikai, Shumpei Nemoto, Ayako Furuhama, Takashi Yamada, Hiroyuki Kusuhara, and **Tadahaya Mizuno**†
 > *Preprint / Submitted, 2025.*
-> [[Project Page]](https://github.com/mizuno-group/NotationalInconsistency) | [[Manuscript]](https://arxiv.org/abs/xxxx.xxxxx)
+> [[Project Page]](https://github.com/mizuno-group/NotationalInconsistency) | [[Manuscript]](https://arxiv.org/abs/2505.07139)
 
 ---
 
@@ -45,13 +45,14 @@ pip install git+https://github.com/mizuno-group/NotationalInconsistency.git
 NotationalInconsistency/
 ├── src/
 │   └── notate/                 # main package
-│       ├── __init__.py
-│       ├── pubchem.py          # data preprocessing and SMILES canonicalization
-│       ├── voc.py              # tokenizer and vocabulary builder
-│       └── train.py            # training pipeline (Transformer + VAE)
+│       └── __init__.py
+├── scripts/
+│   ├── 1_preprocess.py         # data preprocessing and SMILES canonicalization
+│   ├── 2_tokenize.py           # tokenizer and vocabulary builder
+│   └── 3_train.py              # training pipeline (Transformer + VAE)
 ├── data/                       
 ├── notebooks/                  # example notebooks for analysis and visualization
-│   └── usage_example.ipynb
+│   └── figure.ipynb
 ├── pyproject.toml
 ├── LICENSE
 └── README.md
@@ -85,7 +86,7 @@ pip install -e .
 ### 1. Preprocess PubChem data
 
 ```bash
-python scripts/pubchem.py
+python scripts/1_preprocess.py
 ```
 
 This script reads `Pubchem_chunk_*.csv` and generates:
@@ -95,7 +96,7 @@ This script reads `Pubchem_chunk_*.csv` and generates:
 ### 2. Tokenize SMILES
 
 ```bash
-python scripts/voc.py
+python scripts/2_tokenize.py
 ```
 
 This creates `.pkl` tokenized datasets for canonical and randomized SMILES.
@@ -103,7 +104,7 @@ This creates `.pkl` tokenized datasets for canonical and randomized SMILES.
 ### 3. Train the Model
 
 ```bash
-python scripts/train.py
+python scripts/3_train.py
 ```
 
 * Uses Transformer + Variational Autoencoder (VAE)
@@ -116,9 +117,9 @@ python scripts/train.py
 
 | Script           | Description                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------------------- |
-| **`pubchem.py`** | Canonicalizes and randomizes SMILES from PubChem, generating paired datasets.                |
-| **`voc.py`**     | Defines `VocabularyTokenizer` and converts SMILES strings into token indices for training.   |
-| **`train.py`**   | Main training script integrating data loading, model construction, hooks, and checkpointing. |
+| **`1_preprocess.py`** | Canonicalizes and randomizes SMILES from PubChem, generating paired datasets.                |
+| **`2_tokenize.py`**     | Defines `VocabularyTokenizer` and converts SMILES strings into token indices for training.   |
+| **`3_train.py`**   | Main training script integrating data loading, model construction, hooks, and checkpointing. |
 
 Each component is modular and can be reused for other SMILES-based CLM studies.
 

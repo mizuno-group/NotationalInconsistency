@@ -1,4 +1,4 @@
-# scripts/pubchem.py
+# scripts/1_preprocess.py
 import argparse
 import re
 from pathlib import Path

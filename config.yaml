@@ -35,7 +35,7 @@ model:
       type: PositionalEmbedding
       embedding:
         # large_vocs.csv + 3 (adjust if needed)
-        num_embeddings: 1123
+        num_embeddings: 129
         embedding_dim: 512
         padding_idx: 0  # explicit: <pad>=0
       dropout: 0.0
@@ -231,14 +231,14 @@ training:
             dtype: long
             len_name: src_len
             padding_value: 0
-            path_list: "./data/AllPubchem_test_random.pkl"
+            path_list: "./data/Pubchem_chunk_pro_0_ran.pkl"
           target:
             type: string
             dim: 1
             dtype: long
             len_name: tgt_len
             padding_value: 0
-            path_list: "./data/AllPubchem_test_canonical.pkl"
+            path_list: "./data/Pubchem_chunk_pro_0_can.pkl"
 
     vals:
       valid:
