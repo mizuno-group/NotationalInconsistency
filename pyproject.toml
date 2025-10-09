@@ -1,0 +1,65 @@
+# ===================================================================
+# Build system
+# ===================================================================
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ===================================================================
+# Project metadata
+# ===================================================================
+[project]
+name = "notate"
+version = "0.4.5"
+description = "Notational inconsistency impacts."
+readme = "README.md"
+requires-python = ">=3.9"
+
+authors = [
+  { name = "Yosuke Kikuchi" },
+  { name = "Yasuhiro Yoshikai" },
+  { name = "Tadahaya Mizuno" },
+]
+
+maintainers = [
+  { name = "Tadahaya Mizuno", email = "tadahaya@gmail.com" }
+]
+
+license = { text = "MIT" }
+
+# -------------------------------------------------------------------
+# Runtime dependencies
+# -------------------------------------------------------------------
+dependencies = [
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "tqdm",
+  "matplotlib",
+  "addict",
+  "PyYAML"
+]
+
+# ===================================================================
+# Optional dependencies
+# ===================================================================
+[project.optional-dependencies]
+dev = [
+  "jupyterlab",
+  "ipykernel",
+  "black",
+  "ruff",
+  "isort",
+  "xgboost",
+  # "pytest",
+]
+
+# ===================================================================
+# Setuptools (src layout)
+# ===================================================================
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]    
+include = ["notate*"]
