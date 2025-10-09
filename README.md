@@ -81,6 +81,14 @@ pip install -e .
 
 ---
 
+If the installation fails, please try upgrading your packaging tools first:
+```bash
+python3 -m pip install -U pip setuptools wheel
+```
+
+---
+
+
 ## Quick Start
 
 ### 1. Preprocess PubChem data
